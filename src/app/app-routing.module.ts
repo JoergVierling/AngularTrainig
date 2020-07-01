@@ -1,11 +1,15 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {TimerComponent} from "./components/timer/timer.component";
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path: 'timer', pathMatch: 'full', component: TimerComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
