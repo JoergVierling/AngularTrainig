@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {LogService} from '../../services/log/log.service';
+import {TimerService} from '../../services/timer/timer.service';
 
 @Component({
   selector: 'app-timer-control',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TimerControlComponent implements OnInit {
 
-  constructor() { }
+  @Output() stopTimer: EventEmitter<any> = new EventEmitter();
+  @Output() startTimer: EventEmitter<any> = new EventEmitter();
 
-  ngOnInit(): void {
+  constructor(private log: LogService, public timer: TimerService) {
   }
 
+  ngOnInit(): void {
+    this.log.messageInfo('Component timer-display created');
+  }
+
+  start(): void {
+    this.log.messageDebug('Component timer-display timer started');
+    this.startTimer.emit();
+  }
+
+  stop(): void {
+    this.log.messageDebug('Component timer-display timer ended');
+    this.stopTimer.emit();
+  }
 }

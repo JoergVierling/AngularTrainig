@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {LogService} from '../../services/log/log.service';
+import {TimerService} from '../../services/timer/timer.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-timer',
@@ -7,9 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TimerComponent implements OnInit {
 
-  constructor() { }
+  timer$: Observable<number>;
+  roundTimer: number[] = [];
 
-  ngOnInit(): void {
+  constructor(private logService: LogService, public timerService: TimerService) {
   }
 
+  ngOnInit(): void {
+    this.logService.messageInfo('Component timer-display created');
+
+    this.timer$ = this.timerService.getTimer();
+  }
+
+  timerStart(): void {
+    this.timerService.start();
+  }
+
+  timerStop(): void {
+    this.timerService.stop();
+
+    this.roundTimer.push(this.timerService.accutalTime);
+    this.logService.messageInfo(this.roundTimer);
+  }
 }

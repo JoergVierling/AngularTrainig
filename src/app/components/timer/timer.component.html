@@ -1,9 +1,12 @@
 <mat-card id="main">
   <mat-card-content>
     <mat-card-title>Timer</mat-card-title>
-    <app-timer-diplay></app-timer-diplay>
 
-    <app-timer-control></app-timer-control>
+    <app-timer-diplay [isRunning]="timerService.started"
+                      [actualTime]="timer$ | async"
+                      [roundTime]="roundTimer"></app-timer-diplay>
 
+    <app-timer-control (startTimer)="timerStart()"
+                       (stopTimer)="timerStop()"></app-timer-control>
   </mat-card-content>
 </mat-card>

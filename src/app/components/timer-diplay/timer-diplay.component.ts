@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {LogService} from '../../services/log/log.service';
 
 @Component({
   selector: 'app-timer-diplay',
   templateUrl: './timer-diplay.component.html',
   styleUrls: ['./timer-diplay.component.scss']
 })
-export class TimerDiplayComponent implements OnInit {
+export class TimerDisplayComponent implements OnInit {
+  @Input() actualTime: number;
+  @Input() roundTime: number[];
+  @Input() isRunning: boolean;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private log: LogService) {
   }
 
+  ngOnInit(): void {
+    this.log.messageInfo('Component timer-display created');
+  }
 }

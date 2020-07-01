@@ -1,1 +1,7 @@
-<p>timer-diplay works!</p>
+<div>low Budget timer ;)</div>
+<div>Time:&nbsp;<span [class.active]="isRunning">{{actualTime}} sek.</span></div>
+
+<h4>Rundenzeit</h4>
+<ol>
+  <li *ngFor="let time of roundTime"> te&nbsp;&nbsp;Zeit: {{time}} sek.</li>
+</ol>
