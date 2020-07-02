@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "monthly"
+  "defaultProject": "monthly",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

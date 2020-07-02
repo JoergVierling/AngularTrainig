@@ -7,11 +7,18 @@ export class TimerService {
   started: boolean;
 
   public accutalTime = 0;
-  private readonly timerValue$: Observable<number>;
+  private timerValue$: Observable<number>;
   private timerInternal$: Observable<number>;
 
   constructor(private logService: LogService) {
 
+  }
+
+  public getTimer(): Observable<number> {
+    return this.timerValue$;
+  }
+
+  public inti(): void {
     this.timerInternal$ = timer(1000, 2000);
 
     this.timerValue$ = new Observable((observer) => {
@@ -24,10 +31,6 @@ export class TimerService {
         }
       });
     });
-  }
-
-  public getTimer(): Observable<number> {
-    return this.timerValue$;
   }
 
   public start(): void {

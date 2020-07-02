@@ -1,0 +1,14 @@
+<mat-card id="main">
+  <mat-card-content>
+    <mat-card-title>Timer</mat-card-title>
+
+    <app-timer-display [isRunning]="timerIsRunning$ | async"
+                       [actualTime]="timer$ | async"
+    ></app-timer-display>
+
+    <app-timer-control [isRunning]="timerIsRunning$ | async"
+                       (sendMessage)="log($event)"
+                       (startTimer)="timerStart()"
+                       (stopTimer)="timerStop()"></app-timer-control>
+  </mat-card-content>
+</mat-card>

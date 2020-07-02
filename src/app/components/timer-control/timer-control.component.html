@@ -1,4 +1,4 @@
 <div id="control">
-  <button [disabled]="this.timer.started" (click)="start()" mat-raised-button color="accent" class="stratButton">Start</button>
-  <button [disabled]="!this.timer.started" (click)="stop()" mat-raised-button color="accent" class="endButton">End</button>
+  <button [disabled]="this.isRunning" (click)="start()" mat-raised-button color="accent" class="stratButton">Start</button>
+  <button [disabled]="!this.isRunning" (click)="stop()" mat-raised-button color="accent" class="endButton">End</button>
 </div>
